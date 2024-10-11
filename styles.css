@@ -17,16 +17,14 @@ header {
     padding: 1em;
     text-align: center;
     align-items: center;
+    display: flex;
+    gap: 20px;
 }
 
 .logo {
     height: 50px;
     width: 180px;
     color: grey;
-}
-
-nav {
-    background-color: #333;
 }
 
 nav ul {
