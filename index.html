@@ -1,1 +1,65 @@
-<h1>Test</h1>
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Erzähl mir deine Geschichte</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header mit Überschrift -->
+    <header>
+        <h1>Erzähl mir deine Geschichte</h1>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#archive">Archiv</a></li>
+            <li><a href="#create-comic">Erstelle einen Comic</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hauptinhalt der Seite -->
+    <main id="home">
+        <section>
+            <h2>Über das Projekt</h2>
+            <p>Kinder lesen immer weniger, und wir wollen das ändern. Erstelle deine eigene Geschichte und teile sie mit anderen!</p>
+            <button id="createComicBtn">Erstelle einen Comic</button>
+        </section>
+    </main>
+
+    <!-- Modal für die Geschichte und den Comic-Erstellungsprozess -->
+    <div id="comicModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="step1">
+                <h3>Schreibe mir deine Geschichte auf</h3>
+                <textarea id="storyInput" placeholder="Deine Geschichte..." maxlength="1000"></textarea>
+                <p id="charCount">0/1000</p>
+                <p id="errorMessage" class="error"></p>
+                <button id="nextBtn1">Weiter</button>
+            </div>
+            <div id="step2" style="display: none;">
+                <h3>Lade bis zu 6 Bilder hoch</h3>
+                <input type="file" id="imageUpload" accept="image/*" multiple>
+                <p id="uploadCount">0/6 Bilder</p>
+                <button id="nextBtn2">Weiter</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Archiv Bereich -->
+    <section id="archive">
+        <h2>Archiv</h2>
+        <div id="archiveContent">
+            <p>Hier werden die erstellten Comics und Geschichten angezeigt.</p>
+            <!-- Hier könnte später eine Liste oder Galerie hochgeladener Inhalte erscheinen -->
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
