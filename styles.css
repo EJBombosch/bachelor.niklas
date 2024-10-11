@@ -24,7 +24,7 @@ header {
 .logo {
     height: 50px;
     width: 180px;
-    color: grey;
+    background-color: lightgray;
 }
 
 nav ul {
@@ -37,6 +37,7 @@ nav ul {
 
 nav ul li {
     margin: 0 1em;
+    color: #000;
 }
 
 nav ul li a {

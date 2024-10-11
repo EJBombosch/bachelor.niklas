@@ -71,17 +71,55 @@ imageUpload.addEventListener('change', function() {
 
 // Automatischer Slider
 const sliderTrack = document.querySelector('.slider-track');
-let index = 0;
+const sliderItems = document.querySelectorAll('.slider-item');
+let index = 1; // Start bei 1, da wir den Klon des ersten Elements anzeigen
+let isSliding = false;
 
+// Klone das erste und letzte Element
+const firstClone = sliderItems[0].cloneNode(true);
+const lastClone = sliderItems[sliderItems.length - 1].cloneNode(true);
+
+// Füge die Klone ans Ende und den Anfang
+sliderTrack.appendChild(firstClone);
+sliderTrack.insertBefore(lastClone, sliderItems[0]);
+
+// Aktualisiere die Breite des Slider-Tracks
+const totalItems = sliderTrack.children.length;
+sliderTrack.style.width = `${totalItems * 412}px`; // 412px Breite pro Item
+
+// Start-Position auf das erste "echte" Element setzen
+sliderTrack.style.transform = `translateX(-${412}px)`;
+
+// Funktion zum automatischen Sliden
 function slide() {
-    const totalItems = sliderTrack.children.length;
+    if (isSliding) return;
+    isSliding = true;
+
+    sliderTrack.style.transition = 'transform 0.5s ease-in-out';
     index++;
 
-    if (index >= totalItems) {
-        index = 0;
-    }
-
     sliderTrack.style.transform = `translateX(-${index * 412}px)`;
+
+    // Wenn der letzte Klon erreicht ist, springe unsichtbar zurück zum ersten Original
+    setTimeout(() => {
+        if (index === totalItems - 1) {
+            sliderTrack.style.transition = 'none'; // Transition ausschalten
+            index = 1; // Zurück zum ersten Original
+            sliderTrack.style.transform = `translateX(-${index * 412}px)`;
+        }
+        isSliding = false;
+    }, 500); // Die Zeit hier muss mit der Übergangszeit (0.5s) übereinstimmen
 }
 
-setInterval(slide, 3000); // Alle 3 Sekunden weitersliden
+// Alle 3 Sekunden zum nächsten Slide wechseln
+setInterval(slide, 3000);
+
+// Falls der erste Klon erreicht wird, springe unsichtbar zurück zum letzten Original
+sliderTrack.addEventListener('transitionend', () => {
+    if (index === 0) {
+        sliderTrack.style.transition = 'none'; // Transition ausschalten
+        index = totalItems - 2; // Zum letzten Original springen
+        sliderTrack.style.transform = `translateX(-${index * 412}px)`;
+    }
+});
+
