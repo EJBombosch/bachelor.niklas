@@ -16,8 +16,7 @@
     <!-- Navigation -->
     <nav>
         <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#archive">Archiv</a></li>
+            <li><a href="#archive">Geschichten Sammlung</a></li>
             <li><a href="#create-comic">Erstelle einen Comic</a></li>
         </ul>
     </nav>
@@ -31,10 +30,12 @@
         </section>
     </main>
 
-    <!-- Modal für die Geschichte und den Comic-Erstellungsprozess -->
-    <div id="comicModal" class="modal">
+     <!-- Modal für die Geschichte und den Comic-Erstellungsprozess -->
+     <div id="comicModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
+            
+            <!-- Schritt 1: Geschichte schreiben -->
             <div id="step1">
                 <h3>Schreibe mir deine Geschichte auf</h3>
                 <textarea id="storyInput" placeholder="Deine Geschichte..." maxlength="1000"></textarea>
@@ -42,14 +43,18 @@
                 <p id="errorMessage" class="error"></p>
                 <button id="nextBtn1">Weiter</button>
             </div>
+            
+            <!-- Schritt 2: Bilder hochladen -->
             <div id="step2" style="display: none;">
                 <h3>Lade bis zu 6 Bilder hoch</h3>
                 <input type="file" id="imageUpload" accept="image/*" multiple>
                 <p id="uploadCount">0/6 Bilder</p>
+                <button id="prevBtn2">Zurück</button>
                 <button id="nextBtn2">Weiter</button>
             </div>
         </div>
     </div>
+
 
     <!-- Archiv Bereich -->
     <section id="archive">

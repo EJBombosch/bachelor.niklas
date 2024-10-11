@@ -36,6 +36,7 @@ storyInput.addEventListener('input', function() {
 // Nächster Schritt im Modal
 const nextBtn1 = document.getElementById('nextBtn1');
 const nextBtn2 = document.getElementById('nextBtn2');
+const prevBtn2 = document.getElementById('prevBtn2');  // Hinzugefügter Zurück-Button
 const step1 = document.getElementById('step1');
 const step2 = document.getElementById('step2');
 
@@ -46,6 +47,12 @@ nextBtn1.onclick = function() {
     } else {
         errorMessage.textContent = 'Bitte kürze deine Geschichte auf 1000 Zeichen';
     }
+}
+
+// Zurück zu Schritt 1
+prevBtn2.onclick = function() {
+    step2.style.display = 'none';
+    step1.style.display = 'block';
 }
 
 // Bild-Upload-Prüfung
