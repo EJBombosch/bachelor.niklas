@@ -1,63 +1,86 @@
 // Modal öffnen und schließen
-const modal = document.getElementById('comicModal');
-const createComicBtn = document.getElementById('createComicBtn');
-const closeModal = document.getElementsByClassName('close')[0];
+const openModalBtn = document.getElementById('openModalBtn');
+const modal = document.getElementById('modal');
+const closeModal = document.getElementById('closeModal');
 
-createComicBtn.onclick = function() {
+openModalBtn.addEventListener('click', () => {
     modal.style.display = 'block';
-}
+});
 
-closeModal.onclick = function() {
+closeModal.addEventListener('click', () => {
     modal.style.display = 'none';
-}
+});
 
-window.onclick = function(event) {
-    if (event.target === modal) {
-        modal.style.display = 'none';
-    }
-}
+// Schritte im Modal
+let currentStep = 1;
+const maxChars = 1000;
 
-// Zeichenanzahl im Textfeld prüfen
+// Elemente für die Schritte
+const step1 = document.getElementById('step-1');
+const step2 = document.getElementById('step-2');
+const step3 = document.getElementById('step-3');
+
+// Buttons
+const nextStepBtn1 = document.getElementById('nextStepBtn1');
+const prevStepBtn2 = document.getElementById('prevStepBtn2');
+const nextStepBtn2 = document.getElementById('nextStepBtn2');
+const prevStepBtn3 = document.getElementById('prevStepBtn3');
+const submitBtn = document.getElementById('submitBtn');
+
+// Char Count und Textprüfung
 const storyInput = document.getElementById('storyInput');
 const charCount = document.getElementById('charCount');
 const errorMessage = document.getElementById('errorMessage');
 
-storyInput.addEventListener('input', function() {
+// Zeichen zählen und prüfen
+storyInput.addEventListener('input', () => {
     const textLength = storyInput.value.length;
     charCount.textContent = `${textLength}/1000`;
 
-    if (textLength > 1000) {
-        errorMessage.textContent = 'Bitte kürze deine Geschichte auf 1000 Zeichen';
+    if (textLength > maxChars) {
+        errorMessage.style.display = 'block';
     } else {
-        errorMessage.textContent = '';
+        errorMessage.style.display = 'none';
     }
 });
 
-// Nächster Schritt im Modal
-const nextBtn1 = document.getElementById('nextBtn1');
-const nextBtn2 = document.getElementById('nextBtn2');
-const step1 = document.getElementById('step1');
-const step2 = document.getElementById('step2');
+// Schritt 1: Zurück zu Schritt 1
+nextStepBtn1.addEventListener('click', () => {
+    const textLength = storyInput.value.length;
+    if (textLength <= maxChars) {
+        changeStep(2);
+    }
+});
 
-nextBtn1.onclick = function() {
-    if (storyInput.value.length <= 1000) {
-        step1.style.display = 'none';
-        step2.style.display = 'block';
-    } else {
-        errorMessage.textContent = 'Bitte kürze deine Geschichte auf 1000 Zeichen';
+// Schritt 2: Vor und Zurück
+prevStepBtn2.addEventListener('click', () => changeStep(1));
+nextStepBtn2.addEventListener('click', () => changeStep(3));
+
+// Schritt 3: Zurück zu Schritt 2
+prevStepBtn3.addEventListener('click', () => changeStep(2));
+
+// Schritt wechseln
+function changeStep(step) {
+    currentStep = step;
+
+    // Alle Schritte ausblenden
+    step1.style.display = 'none';
+    step2.style.display = 'none';
+    step3.style.display = 'none';
+
+    // Zeige aktuellen Schritt
+    switch (step) {
+        case 1:
+            step1.style.display = 'block';
+            break;
+        case 2:
+            step2.style.display = 'block';
+            break;
+        case 3:
+            step3.style.display = 'block';
+            break;
     }
 }
 
-// Bild-Upload-Prüfung
-const imageUpload = document.getElementById('imageUpload');
-const uploadCount = document.getElementById('uploadCount');
-
-imageUpload.addEventListener('change', function() {
-    const files = imageUpload.files;
-    if (files.length > 6) {
-        alert('Du kannst maximal 6 Bilder hochladen.');
-        imageUpload.value = '';  // Reset the file input
-    } else {
-        uploadCount.textContent = `${files.length}/6 Bilder`;
-    }
-});
+// Initialer Schritt
+changeStep(1);
