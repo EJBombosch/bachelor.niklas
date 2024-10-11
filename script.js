@@ -68,3 +68,20 @@ imageUpload.addEventListener('change', function() {
         uploadCount.textContent = `${files.length}/6 Bilder`;
     }
 });
+
+// Automatischer Slider
+const sliderTrack = document.querySelector('.slider-track');
+let index = 0;
+
+function slide() {
+    const totalItems = sliderTrack.children.length;
+    index++;
+
+    if (index >= totalItems) {
+        index = 0;
+    }
+
+    sliderTrack.style.transform = `translateX(-${index * 412}px)`;
+}
+
+setInterval(slide, 3000); // Alle 3 Sekunden weitersliden
