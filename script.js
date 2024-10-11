@@ -1,86 +1,63 @@
 // Modal öffnen und schließen
-const openModalBtn = document.getElementById('openModalBtn');
-const modal = document.getElementById('modal');
-const closeModal = document.getElementById('closeModal');
+const modal = document.getElementById('comicModal');
+const createComicBtn = document.getElementById('createComicBtn');
+const closeModal = document.getElementsByClassName('close')[0];
 
-openModalBtn.addEventListener('click', () => {
+createComicBtn.onclick = function() {
     modal.style.display = 'block';
-});
+}
 
-closeModal.addEventListener('click', () => {
+closeModal.onclick = function() {
     modal.style.display = 'none';
-});
+}
 
-// Schritte im Modal
-let currentStep = 1;
-const maxChars = 1000;
+window.onclick = function(event) {
+    if (event.target === modal) {
+        modal.style.display = 'none';
+    }
+}
 
-// Elemente für die Schritte
-const step1 = document.getElementById('step-1');
-const step2 = document.getElementById('step-2');
-const step3 = document.getElementById('step-3');
-
-// Buttons
-const nextStepBtn1 = document.getElementById('nextStepBtn1');
-const prevStepBtn2 = document.getElementById('prevStepBtn2');
-const nextStepBtn2 = document.getElementById('nextStepBtn2');
-const prevStepBtn3 = document.getElementById('prevStepBtn3');
-const submitBtn = document.getElementById('submitBtn');
-
-// Char Count und Textprüfung
+// Zeichenanzahl im Textfeld prüfen
 const storyInput = document.getElementById('storyInput');
 const charCount = document.getElementById('charCount');
 const errorMessage = document.getElementById('errorMessage');
 
-// Zeichen zählen und prüfen
-storyInput.addEventListener('input', () => {
+storyInput.addEventListener('input', function() {
     const textLength = storyInput.value.length;
     charCount.textContent = `${textLength}/1000`;
 
-    if (textLength > maxChars) {
-        errorMessage.style.display = 'block';
+    if (textLength > 1000) {
+        errorMessage.textContent = 'Bitte kürze deine Geschichte auf 1000 Zeichen';
     } else {
-        errorMessage.style.display = 'none';
+        errorMessage.textContent = '';
     }
 });
 
-// Schritt 1: Zurück zu Schritt 1
-nextStepBtn1.addEventListener('click', () => {
-    const textLength = storyInput.value.length;
-    if (textLength <= maxChars) {
-        changeStep(2);
-    }
-});
+// Nächster Schritt im Modal
+const nextBtn1 = document.getElementById('nextBtn1');
+const nextBtn2 = document.getElementById('nextBtn2');
+const step1 = document.getElementById('step1');
+const step2 = document.getElementById('step2');
 
-// Schritt 2: Vor und Zurück
-prevStepBtn2.addEventListener('click', () => changeStep(1));
-nextStepBtn2.addEventListener('click', () => changeStep(3));
-
-// Schritt 3: Zurück zu Schritt 2
-prevStepBtn3.addEventListener('click', () => changeStep(2));
-
-// Schritt wechseln
-function changeStep(step) {
-    currentStep = step;
-
-    // Alle Schritte ausblenden
-    step1.style.display = 'none';
-    step2.style.display = 'none';
-    step3.style.display = 'none';
-
-    // Zeige aktuellen Schritt
-    switch (step) {
-        case 1:
-            step1.style.display = 'block';
-            break;
-        case 2:
-            step2.style.display = 'block';
-            break;
-        case 3:
-            step3.style.display = 'block';
-            break;
+nextBtn1.onclick = function() {
+    if (storyInput.value.length <= 1000) {
+        step1.style.display = 'none';
+        step2.style.display = 'block';
+    } else {
+        errorMessage.textContent = 'Bitte kürze deine Geschichte auf 1000 Zeichen';
     }
 }
 
-// Initialer Schritt
-changeStep(1);
+// Bild-Upload-Prüfung
+const imageUpload = document.getElementById('imageUpload');
+const uploadCount = document.getElementById('uploadCount');
+
+imageUpload.addEventListener('change', function() {
+    const files = imageUpload.files;
+    if (files.length > 6) {
+        alert('Du kannst maximal 6 Bilder hochladen.');
+        imageUpload.value = '';  // Reset the file input
+    } else {
+        uploadCount.textContent = `${files.length}/6 Bilder`;
+    }
+});

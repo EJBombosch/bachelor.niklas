@@ -3,50 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Erstelle deinen Comic</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Erzähl mir deine Geschichte</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
+    <!-- Header mit Überschrift -->
     <header>
         <h1>Erzähl mir deine Geschichte</h1>
-        <p>Erstelle deinen eigenen Comic und teile ihn mit der Welt!</p>
     </header>
 
-    <main>
-        <button id="openModalBtn">Erstelle einen Comic</button>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#archive">Archiv</a></li>
+            <li><a href="#create-comic">Erstelle einen Comic</a></li>
+        </ul>
+    </nav>
 
-        <!-- Modal Struktur -->
-        <div id="modal" class="modal">
-            <div class="modal-content">
-                <span class="close" id="closeModal">&times;</span>
+    <!-- Hauptinhalt der Seite -->
+    <main id="home">
+        <section>
+            <h2>Über das Projekt</h2>
+            <p>Kinder lesen immer weniger, und wir wollen das ändern. Erstelle deine eigene Geschichte und teile sie mit anderen!</p>
+            <button id="createComicBtn">Erstelle einen Comic</button>
+        </section>
+    </main>
 
-                <div id="step-1" class="modal-step">
-                    <h2>Schreibe mir deine Geschichte auf</h2>
-                    <textarea id="storyInput" placeholder="Erzähle deine Geschichte..."></textarea>
-                    <p id="charCount">0/1000</p>
-                    <p id="errorMessage" style="color: red; display: none;">Bitte kürze deine Geschichte auf 1000 Zeichen.</p>
-                    <button id="nextStepBtn1">Weiter</button>
-                </div>
-
-                <div id="step-2" class="modal-step" style="display: none;">
-                    <h2>Lade bis zu 6 Bilder hoch</h2>
-                    <input type="file" id="imageUpload" multiple accept="image/*" />
-                    <p>Du kannst bis zu 6 Bilder hochladen.</p>
-                    <button id="prevStepBtn2">Zurück</button>
-                    <button id="nextStepBtn2">Weiter</button>
-                </div>
-
-                <div id="step-3" class="modal-step" style="display: none;">
-                    <h2>Überprüfe und reiche deine Geschichte ein</h2>
-                    <p>Hier könntest du eine Vorschau deines Comics sehen.</p>
-                    <button id="prevStepBtn3">Zurück</button>
-                    <button id="submitBtn">Einreichen</button>
-                </div>
-
+    <!-- Modal für die Geschichte und den Comic-Erstellungsprozess -->
+    <div id="comicModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="step1">
+                <h3>Schreibe mir deine Geschichte auf</h3>
+                <textarea id="storyInput" placeholder="Deine Geschichte..." maxlength="1000"></textarea>
+                <p id="charCount">0/1000</p>
+                <p id="errorMessage" class="error"></p>
+                <button id="nextBtn1">Weiter</button>
+            </div>
+            <div id="step2" style="display: none;">
+                <h3>Lade bis zu 6 Bilder hoch</h3>
+                <input type="file" id="imageUpload" accept="image/*" multiple>
+                <p id="uploadCount">0/6 Bilder</p>
+                <button id="nextBtn2">Weiter</button>
             </div>
         </div>
-    </main>
+    </div>
+
+    <!-- Archiv Bereich -->
+    <section id="archive">
+        <h2>Archiv</h2>
+        <div id="archiveContent">
+            <p>Hier werden die erstellten Comics und Geschichten angezeigt.</p>
+            <!-- Hier könnte später eine Liste oder Galerie hochgeladener Inhalte erscheinen -->
+        </div>
+    </section>
 
     <script src="script.js"></script>
 </body>
