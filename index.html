@@ -22,76 +22,77 @@
     </header>
 
     <!-- Hauptinhalt der Seite -->
-    <section>
-        <h2>Werde selbst zum Autor</h2>
-        <p>Das Lesen stirbt aus? Immer weniger Kinder greifen zu Büchern. Laut einer Studie lesen nur noch 42% der 6- bis 12-Jährigen freiwillig in ihrer Freizeit. Das können wir ändern. Erzähle deine Geschichte und inspiriere andere zum Lesen!</p>
-        <button id="createComicBtn">Erstelle einen Comic</button>
-        <a>Beispiel Comic anschauen</a>
-    </section>
+    <main>
+        <section>
+            <h2>Werde selbst zum Autor</h2>
+            <p>Das Lesen stirbt aus? Immer weniger Kinder greifen zu Büchern. Laut einer Studie lesen nur noch 42% der 6- bis 12-Jährigen freiwillig in ihrer Freizeit. Das können wir ändern. Erzähle deine Geschichte und inspiriere andere zum Lesen!</p>
+            <button id="createComicBtn">Erstelle einen Comic</button>
+            <a>Beispiel Comic anschauen</a>
+        </section>
 
-    <section>
-        <h2>Warum Geschichten so wichtig sind</h2>
-        <p>Geschichten haben eine unglaubliche Macht sie bringen uns zum Lachen, Träumen und Lernen. Für Kinder sind Geschichten besonders wertvoll, weil sie ihre Vorstellungskraft beflügeln und ihnen helfen, die Welt um sie herum zu verstehen. Doch immer mehr Kinder verlieren den Zugang zu diesen erlebten Erlebnissen. Hier kannst du das ändern.Erzähl deine eigene Geschichte und lass andere Kinder daran teilhaben! Egal ob abenteuerlich oder lustig wir sind gespannt auf deine Ideen. Schreibe los und lass deinen Erinnerungen freien Lauf!</p>
-    </section>
-    
+        <section>
+            <h2>Warum Geschichten so wichtig sind</h2>
+            <p>Geschichten haben eine unglaubliche Macht sie bringen uns zum Lachen, Träumen und Lernen. Für Kinder sind Geschichten besonders wertvoll, weil sie ihre Vorstellungskraft beflügeln und ihnen helfen, die Welt um sie herum zu verstehen. Doch immer mehr Kinder verlieren den Zugang zu diesen erlebten Erlebnissen. Hier kannst du das ändern.Erzähl deine eigene Geschichte und lass andere Kinder daran teilhaben! Egal ob abenteuerlich oder lustig wir sind gespannt auf deine Ideen. Schreibe los und lass deinen Erinnerungen freien Lauf!</p>
+        </section>
+        
 
-     <!-- Modal für die Geschichte und den Comic-Erstellungsprozess -->
-     <div id="comicModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            
-            <!-- Schritt 1: Geschichte schreiben -->
-            <div id="step1">
-                <h3>Schreibe mir deine Geschichte auf</h3>
-                <textarea id="storyInput" placeholder="Deine Geschichte..." maxlength="1000"></textarea>
-                <p id="charCount">0/1000</p>
-                <p id="errorMessage" class="error"></p>
-                <button id="nextBtn1">Weiter</button>
-            </div>
-            
-            <!-- Schritt 2: Bilder hochladen -->
-            <div id="step2" style="display: none;">
-                <h3>Lade bis zu 6 Bilder hoch</h3>
-                <input type="file" id="imageUpload" accept="image/*" multiple>
-                <p id="uploadCount">0/6 Bilder</p>
-                <button id="prevBtn2">Zurück</button>
-                <button id="nextBtn2">Weiter</button>
-            </div>
-        </div>
-    </div>
-
-     <!-- Statistiken & Fakten Slider Section -->
-    <section id="statistics">
-        <h2>Statistiken & Fakten</h2>
-        <div class="slider">
-            <div class="slider-track">
-                <!-- 4 Slider-Elemente -->
-                <div class="slider-item" style="background-color: #FFA3AF;">
-                    Nur noch 30% der Kinder in Deutschland bekommen regelmäßig vorgelesen. (Quelle: nicht real)
+        <!-- Modal für die Geschichte und den Comic-Erstellungsprozess -->
+        <div id="comicModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                
+                <!-- Schritt 1: Geschichte schreiben -->
+                <div id="step1">
+                    <h3>Schreibe mir deine Geschichte auf</h3>
+                    <textarea id="storyInput" placeholder="Deine Geschichte..." maxlength="1000"></textarea>
+                    <p id="charCount">0/1000</p>
+                    <p id="errorMessage" class="error"></p>
+                    <button id="nextBtn1">Weiter</button>
                 </div>
-                <div class="slider-item" style="background-color: #44A9DF;">
-                    Kinder, die vorgelesen bekommen, entwickeln eine bessere Sprachkompetenz. (Quelle: nicht real)
-                </div>
-                <div class="slider-item" style="background-color: #FFD639;">
-                    Vorlesen fördert die Fantasie und Kreativität von Kindern. (Quelle: nicht real)
-                </div>
-                <div class="slider-item" style="background-color: #26C874;">
-                    Nur 20% der Eltern lesen ihren Kindern regelmäßig vor. (Quelle: nicht real)
+                
+                <!-- Schritt 2: Bilder hochladen -->
+                <div id="step2" style="display: none;">
+                    <h3>Lade bis zu 6 Bilder hoch</h3>
+                    <input type="file" id="imageUpload" accept="image/*" multiple>
+                    <p id="uploadCount">0/6 Bilder</p>
+                    <button id="prevBtn2">Zurück</button>
+                    <button id="nextBtn2">Weiter</button>
                 </div>
             </div>
         </div>
-    </section>
+
+        <!-- Statistiken & Fakten Slider Section -->
+        <section id="statistics">
+            <h2>Statistiken & Fakten</h2>
+            <div class="slider">
+                <div class="slider-track">
+                    <!-- 4 Slider-Elemente -->
+                    <div class="slider-item" style="background-color: #FFA3AF;">
+                        Nur noch 30% der Kinder in Deutschland bekommen regelmäßig vorgelesen. (Quelle: nicht real)
+                    </div>
+                    <div class="slider-item" style="background-color: #44A9DF;">
+                        Kinder, die vorgelesen bekommen, entwickeln eine bessere Sprachkompetenz. (Quelle: nicht real)
+                    </div>
+                    <div class="slider-item" style="background-color: #FFD639;">
+                        Vorlesen fördert die Fantasie und Kreativität von Kindern. (Quelle: nicht real)
+                    </div>
+                    <div class="slider-item" style="background-color: #26C874;">
+                        Nur 20% der Eltern lesen ihren Kindern regelmäßig vor. (Quelle: nicht real)
+                    </div>
+                </div>
+            </div>
+        </section>
 
 
-    <!-- Archiv Bereich 
-    <section id="archive">
-        <h2>Archiv</h2>
-        <div id="archiveContent">
-            <p>Hier werden die erstellten Comics und Geschichten angezeigt.</p>
-        </div>
-    </section>
-    -->
-
+        <!-- Archiv Bereich 
+        <section id="archive">
+            <h2>Archiv</h2>
+            <div id="archiveContent">
+                <p>Hier werden die erstellten Comics und Geschichten angezeigt.</p>
+            </div>
+        </section>
+        -->
+    </main>
     <script src="script.js"></script>
 </body>
 </html>
