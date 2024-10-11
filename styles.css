@@ -120,8 +120,10 @@ a {
 
 .slider {
     overflow: hidden;
-    width: 412px; /* Breite eines Slider-Elements */
     margin: 0 auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 20px;
 }
 
 .slider-track {
